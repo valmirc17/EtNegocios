@@ -3,6 +3,7 @@ import mongoose from 'mongoose' // Importando o Mongoose
 import bodyParser from 'body-parser' // Importando o BodyParser
 
 import clientService from './services/clientService.js'
+import clientModel from './models/clients.js'
 
 //import client from './models/clients'
 //import clientService from './services/clientService.js'
@@ -81,7 +82,7 @@ app.post("/create", function (req, res) {
     const cor_raca = req.body.cor;
 
     // Cria um documento JSON com os dados do formulário
-    const documento = {
+    const newClient = new clientModel( {
         usuario,
         senha,
         nome,
@@ -91,21 +92,9 @@ app.post("/create", function (req, res) {
         cep,
         ramo_atuacao,
         cor_raca
-    };
+    });
 
-    const client = clientService.createClient
-        (
-            usuario,
-            senha,
-            nome,
-            telefone,
-            cidade,
-            estado,
-            cep,
-            ramo_atuacao,
-            cor_raca
-        );
-
+    newClient.save()
         
 
     return res.redirect("/")

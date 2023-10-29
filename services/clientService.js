@@ -13,7 +13,7 @@ class clientService {
 
     }
 
-    createClient(usuario, senha, name, tel, cidade, estado, cep, ramo_atuacao, cor_raca) {
+  /*  createClient(usuario, senha, name, tel, cidade, estado, cep, ramo_atuacao, cor_raca) {
         try {
 
             const Client = clientModel.insertOne({ usuario: usuario , senha: senha , nome: name , telefone: tel, cidade: cidade , estado: estado , cep: cep , ramo_atuacao: ramo_atuacao , cor_raca: cor_raca });
@@ -21,7 +21,7 @@ class clientService {
         } catch (error) {
             throw error; // Você pode lidar com o erro aqui ou lançá-lo para ser tratado em outro lugar
         }
-    }
+    }*/
 
 }
 export default new clientService()

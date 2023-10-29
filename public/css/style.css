@@ -74,6 +74,13 @@ body {
     margin-bottom: 45px;
 }
 
+#btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 170px;
+}
+
 button a{
     color:aliceblue;
 }
