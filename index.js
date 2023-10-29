@@ -2,7 +2,8 @@ import express from 'express' // Importando o Express
 import mongoose from 'mongoose' // Importando o Mongoose
 import bodyParser from 'body-parser' // Importando o BodyParser
 
-import findClient from './services/clientService.js'
+import clientService from './services/clientService.js'
+
 //import client from './models/clients'
 //import clientService from './services/clientService.js'
 
@@ -46,7 +47,7 @@ app.post("/login", async (req, res) => {
             return res.status(400).json({ message: 'Usuário e senha são obrigatórios.' });
         }
 
-        const client = await findClient(username, password);
+        const client = await clientService.findClient(username, password);
 
         if (!client) {
             return res.status(401).json({ message: 'Nome de usuário não encontrado.' });
