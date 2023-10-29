@@ -2,16 +2,18 @@ import mongoose from 'mongoose'
 
 const client = new mongoose.Schema(
     {
-        usuario: String,
-        senha: String,
-        nome: String,
-        telefone: String,
-        cidade: String,
-        estado: String,
-        cep: String,
-        ramo_atuacao: String,
-        cor_raca: String
+        usuario: { type: String },
+        senha: { type: String },
+        nome: { type: String },
+        telefone: { type: String },
+        cidade: { type: String },
+        estado: { type: String },
+        cep: { type: String },
+        ramo_atuacao: { type: String },
+        cor_raca: { type: String }
     }
 )
+const clientModel  = mongoose.model("Clients", client)
 
-export default client
+export default clientModel
+

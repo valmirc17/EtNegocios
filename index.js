@@ -2,7 +2,9 @@ import express from 'express' // Importando o Express
 import mongoose from 'mongoose' // Importando o Mongoose
 import bodyParser from 'body-parser' // Importando o BodyParser
 
-import client from './models/clients.js'
+import findClient from './services/clientService.js'
+//import client from './models/clients'
+//import clientService from './services/clientService.js'
 
 const app = express() // Iniciando o Express
 
@@ -12,12 +14,15 @@ app.use(bodyParser.urlencoded({extended:false}))
 // Permite a utilização de dados via json
 app.use(bodyParser.json())
 
-mongoose.connect("mongodb+srv://admin:yOBqnpOZanrXDD3J@cluster0.413hior.mongodb.net/",{useNewUrlParser: true, useUnifiedTopology: true})
+const uri = "mongodb+srv://admin:9YQZCHx0tddG7Ixs@cluster0.413hior.mongodb.net/etnegocios";
 
-
-// Importanto as classes
-//mport clientService from './services/clientService.js'
-
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Conexão com o MongoDB Atlas estabelecida com sucesso!');
+  })
+  .catch(err => {
+    console.error('Erro ao conectar ao MongoDB Atlas:', err);
+  });
 
 
 // Define o EJS como Renderizador de páginas
@@ -37,25 +42,26 @@ app.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
     try {
-        const client = await client.findOne({ usuario: username });
+        if (!username || !password) {
+            return res.status(400).json({ message: 'Usuário e senha são obrigatórios.' });
+        }
+
+        const client = await findClient(username, password);
 
         if (!client) {
             return res.status(401).json({ message: 'Nome de usuário não encontrado.' });
         }
 
-        if (password === client.senha) {
-            // Aqui, você pode redirecionar o usuário para a página "home" após o login bem-sucedido.
-            return res.redirect("/home");
-        } else {
-            return res.status(401).json({ message: 'Senha incorreta.' });
-        }
+        // Se chegou aqui, o usuário foi encontrado e a senha está correta
+        return res.redirect("/home");
     } catch (error) {
+        console.error(error); // Registre o erro no console
         return res.status(500).json({ message: 'Erro no servidor.' });
     }
 });
 
-app.get("/cadastro",function(req,res){
-    res.render("cadastro")
+app.get("/home",function(req,res){
+    res.render("home")
 })
 
 
