@@ -10,7 +10,7 @@ import clientService from './services/clientService.js'
 const app = express() // Iniciando o Express
 
 // Decodifica os dados recebidos por formulários
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // Permite a utilização de dados via json
 app.use(bodyParser.json())
@@ -18,12 +18,12 @@ app.use(bodyParser.json())
 const uri = "mongodb+srv://admin:9YQZCHx0tddG7Ixs@cluster0.413hior.mongodb.net/etnegocios";
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Conexão com o MongoDB Atlas estabelecida com sucesso!');
-  })
-  .catch(err => {
-    console.error('Erro ao conectar ao MongoDB Atlas:', err);
-  });
+    .then(() => {
+        console.log('Conexão com o MongoDB Atlas estabelecida com sucesso!');
+    })
+    .catch(err => {
+        console.error('Erro ao conectar ao MongoDB Atlas:', err);
+    });
 
 
 // Define o EJS como Renderizador de páginas
@@ -33,7 +33,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('./public'))
 
 // Rota principal
-app.get("/",function(req,res){
+app.get("/", function (req, res) {
     res.render("index")
 })
 
@@ -59,25 +59,46 @@ app.post("/login", async (req, res) => {
         console.error(error); // Registre o erro no console
         return res.status(500).json({ message: 'Erro no servidor.' });
     }
+
 });
 
-app.get("/home",function(req,res){
+app.get("/home", function (req, res) {
     res.render("home")
 })
 
-app.get("/cadastro",function(req,res){
-    res.render("cadastro")
+app.get("/cadastro", function (req, res) {
+    const usuario = req.body.usuario;
+    const senha = req.body.senha;
+    const name = req.body.name;
+    const tel = req.body.senha;
+    const cidade = req.body.cidade;
+    const estado = req.body.estado;
+    const cep = req.body.cep;
+
+    // Cria um documento JSON com os dados do formulário
+    const documento = {
+        usuario,
+        senha,
+        nome,
+        cidade,
+        estado,
+        cep,
+        ramo_atuacao,
+        cor_raca
+    };
+   return res.redirect("/")
+
 })
 
 
 
 
 // Iniciando o servidor na pora 8080
-app.listen(8080,function(erro){
-    if(erro) {
+app.listen(8080, function (erro) {
+    if (erro) {
         console.log("Ocorreu um erro!")
 
-    }else{
+    } else {
         console.log("Servidor iniciado com sucesso!")
     }
 })

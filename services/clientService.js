@@ -13,7 +13,7 @@ class clientService {
     
 }
 
-createClient(username, password,nome,telefone, cidade, estado, cep, ramo_atuacao) {
+createClient(username, password,nome,telefone, cidade, estado, cep, ramo_atuacao, cor_raca) {
     try {
         
         const Client = clientModel.createClient( {usuario: username}, {senha: password }, {nome: nome},{telefone:telefone},{cidade:cidade},{estado:estado},{cep:cep},{ramo_atuacao: ramo_atuacao},{cor_raca: cor_raca});
