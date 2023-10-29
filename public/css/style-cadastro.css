@@ -16,25 +16,15 @@ body {
 .container .content {
     padding: 50px;
     display: flex;
-    flex-direction: column ;
+    flex-direction: row ;
     align-items: center;
     width: 80%;
     max-width: 100%;
 }
-
-.cadastro{
-    display:flex;
+form{
+    display: flex;
     flex-direction: row;
 }
-
-.row1{
-    margin-right: 10px;
-}
-
-.row2{
-    margin-left: 10px;
-}
-
 
 .login-form {
     margin: 20px;
