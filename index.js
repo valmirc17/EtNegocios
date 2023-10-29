@@ -65,28 +65,50 @@ app.post("/login", async (req, res) => {
 app.get("/home", function (req, res) {
     res.render("home")
 })
-
 app.get("/cadastro", function (req, res) {
+    res.render("cadastro")
+})
+
+app.post("/create", function (req, res) {
     const usuario = req.body.usuario;
     const senha = req.body.senha;
-    const name = req.body.name;
-    const tel = req.body.senha;
+    const nome = req.body.name;
+    const telefone = req.body.senha;
     const cidade = req.body.cidade;
     const estado = req.body.estado;
     const cep = req.body.cep;
+    const ramo_atuacao = req.body.ramo;
+    const cor_raca = req.body.cor;
 
     // Cria um documento JSON com os dados do formulário
     const documento = {
         usuario,
         senha,
         nome,
+        telefone,
         cidade,
         estado,
         cep,
         ramo_atuacao,
         cor_raca
     };
-   return res.redirect("/")
+
+    const client = clientService.createClient
+        (
+            usuario,
+            senha,
+            nome,
+            telefone,
+            cidade,
+            estado,
+            cep,
+            ramo_atuacao,
+            cor_raca
+        );
+
+        
+
+    return res.redirect("/")
 
 })
 
