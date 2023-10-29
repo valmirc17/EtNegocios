@@ -16,6 +16,8 @@ EJS
 
 HTML
 
+Cluster Criado na AWS
+
 ## Dificuldades Encontradas
   A grande dificuldade da equipe foi encontrar um tema que abordade-se de forma assertiva a questão da desconstrução do racismo nas relações digitais, o nosso primeiro tema foi cancelado de pois de 8h de trabalho por não se sustentar, debatemos um novo tema que o acima descrito, trablahamos então no mesmo, noite adentro. Superando nosso cansaço e limites.
 
