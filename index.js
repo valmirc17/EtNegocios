@@ -32,23 +32,27 @@ app.get("/",function(req,res){
 })
 
 // Rota Home
+// Rota de login
 app.post("/login", async (req, res) => {
-    const {username, password} = req.body;
-    const client = await cliente.findOne({ usuario: username });    
+    const { username, password } = req.body;
 
-    if (!client) {
-        res.status(401).json({ message: 'Nome de usuário não encontrado.' })
-        return;
+    try {
+        const client = await client.findOne({ usuario: username });
+
+        if (!client) {
+            return res.status(401).json({ message: 'Nome de usuário não encontrado.' });
+        }
+
+        if (password === client.senha) {
+            // Aqui, você pode redirecionar o usuário para a página "home" após o login bem-sucedido.
+            return res.redirect("/home");
+        } else {
+            return res.status(401).json({ message: 'Senha incorreta.' });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: 'Erro no servidor.' });
     }
-
-    if (password === cliente.senha) {
-        res.json({ message: 'Login bem-sucedido!' })
-        res.redirect("home")
-      } else {
-        res.status(401).json({ message: 'Senha incorreta.' })
-        res.redirect("index")
-      }
-})
+});
 
 app.get("/cadastro",function(req,res){
     res.render("cadastro")
