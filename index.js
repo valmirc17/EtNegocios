@@ -54,18 +54,19 @@ app.post("/login", async (req, res) => {
             return res.status(401).json({ message: 'Nome de usuário não encontrado.' });
         }
 
-        // Se chegou aqui, o usuário foi encontrado e a senha está correta
-        return res.redirect("/home");
+        res.redirect(`/home?nome=${client.nome}`);
     } catch (error) {
-        console.error(error); // Registre o erro no console
+        console.error(error);
         return res.status(500).json({ message: 'Erro no servidor.' });
     }
 
 });
 
 app.get("/home", function (req, res) {
-    res.render("home")
-})
+    const nome = req.query.nome;
+    res.render("home", { nome }); 
+});
+
 app.get("/cadastro", function (req, res) {
     res.render("cadastro")
 })

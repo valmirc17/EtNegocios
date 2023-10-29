@@ -1,8 +1,5 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    /*background-image: linear-gradient(215deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.068));
-    background-image: url(/imgs/building-6528075_1920.jpg);
-    background-size: cover;*/
     margin: 0;
     padding: 0;
 }
@@ -114,5 +111,31 @@ button a :hover{
     background-color: rgba(0, 0, 0, 0.08);
     margin-top: 20px;
     backdrop-filter: blur(5px);
+
 }
 
+.group{
+    margin-left: 55px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/imgs/woman.png');
+    background-size: cover;
+    background-position: center;
+    color:#000;
+    filter:brightness(50%)
+}
+
+.background-02{
+    color:#000;
+}
+.cnt-home{
+    position: relative;
+    z-index: 1;
+    color:aliceblue
+}

@@ -5,23 +5,13 @@ class clientService {
     findClient(username, password) {
         try {
 
-            const Client = clientModel.findOne({ usuario: username }, { senha: password });
-            return Client;
+            const Client = clientModel.findOne({ usuario: username }, { senha: password},{ nome: 1, usuario: 1, senha: 1 });
+            return Client
         } catch (error) {
-            throw error; // Você pode lidar com o erro aqui ou lançá-lo para ser tratado em outro lugar
+            throw error;
         }
 
     }
-
-  /*  createClient(usuario, senha, name, tel, cidade, estado, cep, ramo_atuacao, cor_raca) {
-        try {
-
-            const Client = clientModel.insertOne({ usuario: usuario , senha: senha , nome: name , telefone: tel, cidade: cidade , estado: estado , cep: cep , ramo_atuacao: ramo_atuacao , cor_raca: cor_raca });
-            return Client;
-        } catch (error) {
-            throw error; // Você pode lidar com o erro aqui ou lançá-lo para ser tratado em outro lugar
-        }
-    }*/
 
 }
 export default new clientService()
