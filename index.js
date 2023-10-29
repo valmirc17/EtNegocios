@@ -65,6 +65,12 @@ app.get("/home",function(req,res){
     res.render("home")
 })
 
+app.get("/cadastro",function(req,res){
+    res.render("cadastro")
+})
+
+
+
 
 // Iniciando o servidor na pora 8080
 app.listen(8080,function(erro){
