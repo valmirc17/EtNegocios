@@ -59,6 +59,13 @@ body {
     margin-bottom: 45px;
 }
 
+button a{
+    color:aliceblue;
+}
+
+button a :hover{
+    color:#000;
+}
 .card{
     display: flex;
     align-items: center;
