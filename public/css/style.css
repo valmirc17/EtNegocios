@@ -13,10 +13,27 @@ body {
     height: 100vh;
     max-width: 1200px;
 }
-.container .content {
+.container .content-01 {
     padding: 50px;
     display: flex;
-    flex-direction: column ;
+    flex-direction: row ;
+    align-items: center;
+    width: 80%;
+    max-width: 100%;
+}
+
+.container .content-02{
+    background-image: url(/imgs/christina-wocintechchat-com-UTw3j_aoIKM-unsplash.jpg);
+    background-size: cover;
+    height: 100%;
+    margin-right: -46px;
+    padding: none;
+}
+
+.container .content-02 {
+    padding: 50px;
+    display: flex;
+    flex-direction: row ;
     align-items: center;
     width: 80%;
     max-width: 100%;
